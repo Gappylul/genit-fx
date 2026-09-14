@@ -1,19 +1,19 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <id>com.github.gappylul.genitfx</id>
     <name>genit-fx</name>
     <vendor>gappylul</vendor>
-    <description><![CDATA[
-        <p><b>genit-fx</b> is a repository that provides a pure template to make it easier to create a new plugin project.</p>
-        <p>The main goal of this template is to speed up the setup phase of plugin development for both new and experienced developers by preconfiguring the project scaffold and CI, linking to the proper documentation pages, and keeping everything organized.</p>
-    ]]></description>
+    <description>Generates JavaFX @FXML fields and methods from FXML files.</description>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+    <depends>com.intellij.modules.xml</depends>
 
-    <resource-bundle>messages.MyBundle</resource-bundle>
-
-    <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.gappylul.genitfx.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-        <postStartupActivity implementation="com.github.gappylul.genitfx.startup.MyProjectActivity" />
-    </extensions>
+    <actions>
+        <action id="com.github.gappylul.genitfx.GenerateFxmlMembersAction"
+                class="com.github.gappylul.genitfx.GenerateFxmlMembersAction"
+                text="FXML Components and Methods"
+                description="Generates @FXML fields from the associated FXML file">
+            <add-to-group group-id="GenerateGroup" anchor="last"/>
+        </action>
+    </actions>
 </idea-plugin>
